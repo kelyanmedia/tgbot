@@ -8,17 +8,30 @@ window.addEventListener("load", pageLoad)
 function pageLoad() {
   const htmlTag = document.documentElement
 
-  // document.addEventListener('click', e => {
-  //     const targetElement = e.target
+  document.addEventListener("click", e => {
+    const targetElement = e.target
 
-  //     if (targetElement.closest('.class')) {
-  //         console.log('1');
-  //     }
-  // })
+    if (targetElement.closest(".referal__copy")) {
+      const button = targetElement.closest(".referal__copy")
+
+      const textToCopy = button.getAttribute("data-copy")
+
+      // Создание временного текстового элемента для копирования
+      const textarea = document.createElement("textarea")
+      textarea.value = textToCopy
+      document.body.appendChild(textarea)
+      textarea.select()
+      document.execCommand("copy")
+      document.body.removeChild(textarea)
+
+      // Добавление класса done к кнопке
+      button.classList.add("done")
+    }
+  })
 
   const inputs = document.querySelectorAll(".sms__input")
 
-  if (inputs) {
+  if (inputs.length > 0) {
     // Фокус на первое поле
     inputs[0].focus()
 

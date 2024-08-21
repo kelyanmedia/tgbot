@@ -229,6 +229,10 @@
     font-size: toRem(24);
     flex: 0 0 toRem(48);
     padding: toRem(5);
+
+    &.done {
+      background-color: #32cd32;
+    }
   }
 }
 
