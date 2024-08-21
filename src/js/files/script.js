@@ -31,11 +31,19 @@ function pageLoad() {
       })
 
       input.addEventListener("input", event => {
-        const value = event.target.value
-        if (!/^[0-9]*$/.test(value)) {
-          event.target.value = value.replace(/[^0-9]/g, "")
-        }
-        if (value.length === 1 && index < inputs.length - 1) {
+        const value = event.target.value.replace(/[^0-9]/g, "")
+
+        if (value.length > 1) {
+          // Разбиваем введенное значение на отдельные цифры
+          const chars = value.split("")
+          chars.forEach((char, i) => {
+            if (inputs[index + i]) {
+              inputs[index + i].value = char
+            }
+          })
+          // Фокус на следующее поле после вставки всех цифр
+          inputs[Math.min(index + chars.length, inputs.length - 1)].focus()
+        } else if (value.length === 1 && index < inputs.length - 1) {
           inputs[index + 1].focus()
         } else if (value.length === 0 && index > 0) {
           inputs[index - 1].focus()
@@ -50,26 +58,20 @@ function pageLoad() {
       })
 
       // Обработка вставки кода из буфера обмена
+      // Обработка вставки кода из буфера обмена
       input.addEventListener("paste", event => {
         event.preventDefault()
-        let pasteData = event.clipboardData
-          .getData("text")
-          .replace(/[^0-9]/g, "")
-          .split("")
+        const pasteData = event.clipboardData.getData("text").replace(/[^0-9]/g, "")
 
-        // Ограничение на длину вставляемого кода
-        if (pasteData.length > inputs.length) {
-          pasteData = pasteData.slice(0, inputs.length)
-        }
+        if (pasteData.length === 0) return // Прекращаем выполнение, если вставка не содержит цифр
 
-        pasteData.forEach((char, i) => {
+        // Ограничиваем вставку до количества полей
+        const chars = pasteData.split("")
+        chars.slice(0, inputs.length).forEach((char, i) => {
           inputs[i].value = char
         })
 
-        // Фокус на последнем заполненном поле
-        if (pasteData.length > 0) {
-          inputs[pasteData.length - 1].focus()
-        }
+        inputs[Math.min(chars.length - 1, inputs.length - 1)].focus()
       })
     })
   }
