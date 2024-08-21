@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('html/_head.htm',{
+"title":"TG BOT"
+})
+
+<body>
+	<div class="wrapper">
+		@@include('html/_header.htm',{})
+		<main class="page">
+
+			<section class="auth">
+				<div class="auth__container">
+
+					<a href="#" class="page__back _icon-back"></a>
+
+					<div class="auth__top">
+						<h1 class="auth__title title">Введите код из SMS</h1>
+						<div class="auth__text">На ваш телефон был отправлен код,
+							введите его в поле ввода </div>
+					</div>
+
+					<form action="#" class="auth__form form-auth">
+						<div class="form-auth__body">
+							<div class="form-auth__groop">
+
+								<div class="form-auth__sms sms">
+									<div class="sms__inputs">
+										<input autocomplete="one-time-code" type="text" class="sms__input input" maxlength="1" pattern="[0-9]*">
+										<input autocomplete="off" type="text" class="sms__input input" maxlength="1" pattern="[0-9]*">
+										<input autocomplete="off" type="text" class="sms__input input" maxlength="1" pattern="[0-9]*">
+										<input autocomplete="off" type="text" class="sms__input input" maxlength="1" pattern="[0-9]*">
+									</div>
+									<button class="sms__resend">Запросить ещё раз (0:30)</button>
+									<!-- <button class="sms__resend" disabled>Запросить ещё раз (0:30)</button> -->
+								</div>
+							</div>
+						</div>
+
+						<div class="auth__bottom">
+							<button class="form-auth__button button">Подтвердить</button>
+							<a href="#" class="form-auth__code">Код не пришел? </a>
+						</div>
+
+
+					</form>
+
+
+				</div>
+			</section>
+
+			<!--
+				<section class="test">
+					<div class="test__container">
+						<div class="test__body">
+
+						</div>
+					</div>
+				</section>
+			-->
+
+		</main>
+		@@include('html/_footer.htm',{})
+	</div>
+	@@include('html/_js.htm',{})
+</body>
+
+</html>

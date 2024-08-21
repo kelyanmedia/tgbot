@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('html/_head.htm',{
+"title":"TG BOT"
+})
+
+<body>
+    <div class="wrapper">
+        @@include('html/_header.htm',{})
+        <main class="page">
+
+            <section class="profile">
+                <div class="profile__container">
+                    <a href="#" class="page__back _icon-back"></a>
+
+                    <h1 class="profile__title title">Ваш кабинет</h1>
+
+                    <div class="profile__referal referal">
+
+                        <div class="referal__title">Моя реферальная ссылка</div>
+                        <div class="referal__buttons">
+                            <button class="referal__button button">Пригласить друга</button>
+                            <button class="referal__copy button _icon-copy"></button>
+                        </div>
+
+                    </div>
+
+                    <div class="profile__blocks">
+                        <div class="profile__block block-profile">
+                            <div class="block-profile__users">
+                                <div class="block-profile__icon _icon-user"></div>
+                                <b>10</b>
+                            </div>
+                            <div class="block-profile__text">Прошли по ссылке</div>
+
+                            <a href="#" class="block-profile__link">Посмотреть</a>
+                        </div>
+                        <div class="profile__block block-profile">
+                            <div class="block-profile__text">До <b>20.10.24</b></div>
+
+                            <div class="block-profile__text">Кол-во бонусных месяцев</div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+
+
+
+            <!--
+				<section class="test">
+					<div class="test__container">
+						<div class="test__body">
+
+						</div>
+					</div>
+				</section>
+			-->
+
+        </main>
+        @@include('html/_footer.htm',{})
+    </div>
+    @@include('html/_js.htm',{})
+</body>
+
+</html>
