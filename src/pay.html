@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('html/_head.htm',{
+"title":"TG BOT"
+})
+
+<body>
+    <div class="wrapper">
+        @@include('html/_header.htm',{})
+        <main class="page">
+
+            <section class="pay">
+                <div class="pay__container">
+
+                    <a href="#" class="page__back _icon-back"></a>
+
+                    <div class="pay__top">
+                        <h1 class="pay__title title">Оплата</h1>
+                        <p class="pay__text">Тариф 1 — <b>75000 сум</b>
+                        </p>
+                    </div>
+
+                    <form action="#" class="pay__form form-pay">
+
+                        <div class="form-pay__card card">
+                            <div class="card__top">
+                                <input id="CardNumber" autocomplete="off" type="text" name="cardNumber" placeholder="0000 0000 0000 0000" class="input">
+                                <div id="CardType" class="card__bank"></div>
+                            </div>
+                            <div class="card__bottom">
+                                <div class="card__day"> <input id="expiryDate" autocomplete="off" type="text" name="cardNumber" placeholder="ММ/ГГ" class="input"></div>
+                                <div class="card__cvv">
+                                    <input id="cvv" autocomplete="off" type="text" name="cardNumber" placeholder="CVV" maxlength="3" class="input">
+                                    <span>при наличии</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pay__bottom">
+                            <button class="form-pay__button button">Оплатить</button>
+                            <p class="form-pay__text"><a href="#">Политика конфиденциальности</a> Далеко-далеко, за словесными.</p>
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+            </section>
+
+            <!--
+				<section class="test">
+					<div class="test__container">
+						<div class="test__body">
+
+						</div>
+					</div>
+				</section>
+			-->
+
+        </main>
+        @@include('html/_footer.htm',{})
+    </div>
+    @@include('html/_js.htm',{})
+</body>
+
+</html>

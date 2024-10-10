@@ -35,6 +35,13 @@ textarea {
   &::placeholder {
     color: rgba(31, 31, 31, 0.5);
   }
+
+  &.invalid {
+    border-color: red;
+  }
+  &.valid {
+    border-color: green;
+  }
 }
 .input[placeholder]:not([data-placeholder-nohiden]) {
   &::placeholder {
