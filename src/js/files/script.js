@@ -94,6 +94,7 @@ function pageLoad() {
   const cardNumber = document.getElementById("CardNumber")
   const expiryDate = document.getElementById("expiryDate")
   const cvv = document.getElementById("cvv")
+  const payButton = document.getElementById("payButton")
 
   if (cardNumber) {
     const validateCardNumber = number => {
@@ -154,6 +155,19 @@ function pageLoad() {
         .slice(0, 5) // Ограничиваем длину до 5 символов (MM/YY)
     }
 
+    // Проверка валидности всех полей
+    function checkFormValidity() {
+      const cardNumberValid = validateCardNumber(cardNumber.value.replace(/\s/g, "")) // Проверка номера карты
+      const expiryDateValid = expiryDate.value.length === 5 // Проверка даты
+
+      // Если все поля заполнены корректно, снимаем disabled с кнопки
+      if (cardNumberValid && expiryDateValid) {
+        payButton.disabled = false
+      } else {
+        payButton.disabled = true // Иначе оставляем кнопку отключенной
+      }
+    }
+
     // Основная логика для обработки ввода и форматирования
     cardNumber.addEventListener("input", function (e) {
       let cardNumberValue = cardNumber.value.replace(/\D/g, "") // Очищаем от нецифровых символов
@@ -192,6 +206,8 @@ function pageLoad() {
           document.getElementById("CardType").textContent = errorText
         }
       }
+
+      checkFormValidity()
     })
 
     // Убираем кастомную обработку события вставки
@@ -237,6 +253,8 @@ function pageLoad() {
           document.getElementById("CardType").textContent = errorText
         }
       }
+
+      checkFormValidity()
     })
 
     // Обработчик ввода для поля даты
@@ -246,6 +264,8 @@ function pageLoad() {
         // Если дата введена в формате MM/YY, перемещаем фокус на поле CVV
         cvv.focus()
       }
+
+      checkFormValidity()
     })
 
     // Обработка события вставки для поля даты
@@ -254,6 +274,8 @@ function pageLoad() {
         // Ждем завершения вставки, затем форматируем значение
         let pastedValue = expiryDate.value.replace(/\D/g, "") // Очищаем от нецифровых символов
         expiryDate.value = formatExpiryDate(pastedValue)
+
+        checkFormValidity()
       }, 0) // Используем setTimeout, чтобы дождаться завершения вставки
     })
 
